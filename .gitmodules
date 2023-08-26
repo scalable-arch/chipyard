@@ -136,3 +136,9 @@
 [submodule "generators/hardfloat"]
 	path = generators/hardfloat
 	url = https://github.com/ucb-bar/berkeley-hardfloat.git
+[submodule "generators/vector"]
+	path = generators/vector
+	url = https://github.com/ucb-bar/riscv-vector-impls.git
+[submodule "generators/saturn"]
+	path = generators/saturn
+	url = git@github.com:ucb-bar/saturn.git

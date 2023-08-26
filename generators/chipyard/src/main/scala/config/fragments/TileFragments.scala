@@ -11,6 +11,7 @@ import boom.common.{BoomTileAttachParams}
 import cva6.{CVA6TileAttachParams}
 import sodor.common.{SodorTileAttachParams}
 import ibex.{IbexTileAttachParams}
+import saturn.common.{SaturnTileAttachParams}
 import testchipip._
 import barf.{TilePrefetchingMasterPortParams}
 
@@ -29,6 +30,8 @@ class WithTraceIO extends Config((site, here, up) => {
     case tp: BoomTileAttachParams => tp.copy(tileParams = tp.tileParams.copy(
       core = tp.tileParams.core.copy(trace = true)))
     case tp: CVA6TileAttachParams => tp.copy(tileParams = tp.tileParams.copy(
+      trace = true))
+    case tp: SaturnTileAttachParams => tp.copy(tileParams = tp.tileParams.copy(
       trace = true))
     case other => other
   }
