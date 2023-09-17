@@ -284,9 +284,10 @@ extern "C" void spike_tile(int hartid, char* isa,
                            long long int mmio_d_data,
 
                            //Need to add accelerator info
-                           unsigned char accel_ready,
-                           unsigned char* accel_valid,
-                           long long int* accel_insn
+                           unsigned char accel_a_ready,
+                           unsigned char* accel_a_valid,
+                           int* accel_a_insn,
+                           long long int accel_d_result
                            )
 {
   if (!host) {
@@ -324,15 +325,9 @@ extern "C" void spike_tile(int hartid, char* isa,
 
     /*Begin accelerator section*/
     std::function<extension_t*()> extension;
-    //extension = find_extension("generic");
-    //p->register_extension(extension());
     generic_t* my_generic_extension = new generic_t(simif);
     p->register_extension(my_generic_extension);
 
-    *accel_valid = 0;
-    if (accel_ready) {
-      *accel_valid = simif->accel_handshake((rocc_insn_t*) accel_insn);
-    }
     /*End accelerator section*/
 
     p->enable_log_commits();
@@ -420,6 +415,11 @@ extern "C" void spike_tile(int hartid, char* isa,
   if (mmio_d_valid) {
     simif->mmio_d(mmio_d_data);
   }
+
+  *accel_a_valid = 0;
+    if (accel_a_ready) {
+      *accel_a_valid = simif->accel_handshake((rocc_insn_t*) accel_a_insn);
+    }
 }
 
 /*Begin Accelerator Section*/
@@ -800,8 +800,10 @@ bool chipyard_simif_t::accel_handshake(rocc_insn_t* insn) {
 }
 
 void chipyard_simif_t::push_accel_insn(rocc_insn_t insn) {
-  printf("Pushing instruction to accelerator queue");
+  printf("Pushing instruction to accelerator queue\n");
   accel_insn_q.push_back(insn);
+
+  host->switch_to();
 }
 /*End accelerator section*/
 
