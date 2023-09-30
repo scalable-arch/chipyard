@@ -802,7 +802,7 @@ bool chipyard_simif_t::accel_handshake(rocc_insn_t* insn) {
 void chipyard_simif_t::push_accel_insn(rocc_insn_t insn) {
   printf("Pushing instruction to accelerator queue\n");
   accel_insn_q.push_back(insn);
-
+  
   host->switch_to();
 }
 /*End accelerator section*/

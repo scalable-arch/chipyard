@@ -8,7 +8,7 @@ import freechips.rocketchip.config._
 import freechips.rocketchip.subsystem._
 import freechips.rocketchip.devices.tilelink._
 import freechips.rocketchip.diplomacy._
-import freechips.rocketchip.rocket._
+import freechips.rocketchip.rocket._ 
 import freechips.rocketchip.tilelink._
 import freechips.rocketchip.interrupts._
 import freechips.rocketchip.util._
@@ -268,7 +268,7 @@ class SpikeBlackBox(
         val insn = Output(UInt(64.W))
       }
       val d = new Bundle {
-        val result = Output(UInt(64.W))
+        val result = Input(UInt(64.W))
       }
     }
   })
@@ -407,14 +407,23 @@ class SpikeTileModuleImp(outer: SpikeTile) extends BaseTileModuleImp(outer) {
   //Accel section
   val accel_a_q = Module(new Queue(UInt(32.W), 1, flow=true, pipe=true))
   spike.io.accel.a.ready := accel_a_q.io.enq.ready && accel_a_q.io.count === 0.U
-  //icache_tl.a <> icache_a_q.io.deq //Instruction needs to get fed to accel?
-  //icache_tl comes from line 297 outer assignment like icacheEdge, not sure what equivalent might be for accel
-  //accel_a_q.io.enq.valid := spike.io.accel.a.valid //not needed for accel?
-  accel_a_q.io.enq.bits := spike.io.accel.a.insn //We should be assigning result somehow here
   accel_a_q.io.enq.valid := spike.io.accel.a.valid
   accel_a_q.io.deq.ready := true.B
-  when (accel_a_q.io.deq.fire()) {
-    printf(cf"Got accel instruction: ${accel_a_q.io.deq.bits}")
+  accel_a_q.io.enq.bits := 0.asUInt(64.W)
+  // when (accel_a_q.io.deq.ready && accel_a_q.io.deq.valid) {
+  //   printf(cf"Got accel instruction: ${accel_a_q.io.deq.bits}")
+  //   accel_a_q.io.deq.bits := 0.U
+  // }
+  // when (accel_a_q.io.deq.valid) {
+  //   printf(cf"Got accel instruction: ${accel_a_q.io.deq.bits}")
+  // }
+
+  //spike.io.accel.d.result := 0xdeadbeef.asUInt(64.W)
+  //convert value to a big int
+  spike.io.accel.d.result := 0.asUInt(64.W)
+  when (accel_a_q.io.deq.fire) {
+    printf(cf"Got accel instruction: ${accel_a_q.io.deq.bits}\n")
+    spike.io.accel.d.result := 4.asUInt(64.W)
   }
 }
 
