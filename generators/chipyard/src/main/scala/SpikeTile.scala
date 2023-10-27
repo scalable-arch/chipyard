@@ -145,15 +145,14 @@ class SpikeTile(
     sourceId      = IdRange(0, 1),
     requestFifo   = true))))))
 
-  //Do we need an accelerator node here?
-
   tlOtherMastersNode := TLBuffer() := tlMasterXbar.node
   masterNode :=* tlOtherMastersNode
   tlMasterXbar.node := TLWidthWidget(64) := TLBuffer():= icacheNode
   tlMasterXbar.node := TLWidthWidget(64) := TLBuffer() := dcacheNode
   tlMasterXbar.node := TLWidthWidget(8) := TLBuffer() := mmioNode
 
-  override lazy val module = new SpikeTileModuleImp(this)
+  override lazy val module = new SpikeTileModuleImp(this) //Some sort of error?
+  val accumulator: AccumulatorExample = LazyModule(new AccumulatorExample(OpcodeSet.all)); 
 }
 
 class SpikeBlackBox(
@@ -266,8 +265,12 @@ class SpikeBlackBox(
         val ready = Input(Bool())
         val valid = Output(Bool())
         val insn = Output(UInt(64.W))
+        val rs1 = Output(UInt(32.W))
+        val rs2 = Output(UInt(32.W))
       }
       val d = new Bundle {
+        val valid = Input(Bool())
+        val rd = Input(UInt(5.W))
         val result = Input(UInt(64.W))
       }
     }
@@ -405,25 +408,50 @@ class SpikeTileModuleImp(outer: SpikeTile) extends BaseTileModuleImp(outer) {
   spike.io.mmio.d.data := mmio_tl.d.bits.data
 
   //Accel section
-  val accel_a_q = Module(new Queue(UInt(32.W), 1, flow=true, pipe=true))
-  spike.io.accel.a.ready := accel_a_q.io.enq.ready && accel_a_q.io.count === 0.U
-  accel_a_q.io.enq.valid := spike.io.accel.a.valid
-  accel_a_q.io.deq.ready := true.B
-  accel_a_q.io.enq.bits := 0.asUInt(64.W)
-  // when (accel_a_q.io.deq.ready && accel_a_q.io.deq.valid) {
-  //   printf(cf"Got accel instruction: ${accel_a_q.io.deq.bits}")
-  //   accel_a_q.io.deq.bits := 0.U
-  // }
-  // when (accel_a_q.io.deq.valid) {
-  //   printf(cf"Got accel instruction: ${accel_a_q.io.deq.bits}")
-  // }
+  val to_accel_q = Module(new Queue(UInt(192.W), 1, flow=true, pipe=true))
+  spike.io.accel.a.ready := to_accel_q.io.enq.ready && to_accel_q.io.count === 0.U
+  to_accel_q.io.enq.valid := spike.io.accel.a.valid
+  to_accel_q.io.enq.bits(63,0) := spike.io.accel.a.insn
+  to_accel_q.io.enq.bits(123,63) := spike.io.accel.a.rs1
+  to_accel_q.io.enq.bits(191,124) := spike.io.accel.a.rs2
 
-  //spike.io.accel.d.result := 0xdeadbeef.asUInt(64.W)
-  //convert value to a big int
-  spike.io.accel.d.result := 0.asUInt(64.W)
-  when (accel_a_q.io.deq.fire) {
-    printf(cf"Got accel instruction: ${accel_a_q.io.deq.bits}\n")
-    spike.io.accel.d.result := 4.asUInt(64.W)
+  outer.accumulator.module.io.cmd.valid := to_accel_q.io.deq.valid
+  to_accel_q.io.deq.ready := outer.accumulator.module.io.cmd.ready
+
+  val inst = Wire(new RoCCInstruction())
+  inst.funct := to_accel_q.io.deq.bits(6,0)
+  inst.rs2 := to_accel_q.io.deq.bits(11,7)
+  inst.rs1 := to_accel_q.io.deq.bits(16,12)
+  inst.xd := to_accel_q.io.deq.bits(17)
+  inst.xs1 := to_accel_q.io.deq.bits(18)
+  inst.xs2 := to_accel_q.io.deq.bits(19)
+  inst.rd := to_accel_q.io.deq.bits(24,20)
+  inst.opcode := to_accel_q.io.deq.bits(31,25)
+
+  val cmd = Wire(new RoCCCommand())
+  cmd.inst := inst
+  cmd.rs1 := to_accel_q.io.deq.bits(123,64)
+  cmd.rs2 := to_accel_q.io.deq.bits(191,124)
+  cmd.status := DontCare
+
+  val resp = Wire(new RoCCResponse()) //TODO
+
+  val accumulator = Module(new AccumulatorExampleModuleImp(outer.accumulator))
+  outer.accumulator.module.io.cmd.bits := cmd;
+
+  val from_accel_q = Module(new Queue(UInt(69.W), 1, flow=true, pipe=true)) //rd and result stitched together
+  //from_accel_q.ready := true.B
+  //outer.accumulator.module.io.resp.ready := from_accel_q.io.enq.ready
+  outer.accumulator.module.io.resp.ready := from_accel_q.io.enq.ready && from_accel_q.io.count === 0.U
+  from_accel_q.io.enq.valid := outer.accumulator.module.io.resp.valid
+  from_accel_q.io.enq.bits := {outer.accumulator.module.io.resp.bits.rd; outer.accumulator.module.io.resp.bits.data}
+  spike.io.accel.d.valid := from_accel_q.io.deq.valid
+  from_accel_q.io.deq.ready := true.B
+  spike.io.accel.d.rd := from_accel_q.io.deq.bits(4,0)
+  spike.io.accel.d.result := from_accel_q.io.deq.bits(68,5) 
+
+  when (to_accel_q.io.deq.fire) {
+    printf(cf"Got accel instruction: ${to_accel_q.io.deq.bits}\n")
   }
 }
 

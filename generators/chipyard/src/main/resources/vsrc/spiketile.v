@@ -94,6 +94,9 @@ import "DPI-C" function void spike_tile(input int hartid,
                                         input bit      accel_a_ready,
                                         output bit     accel_a_valid,
                                         output longint accel_a_insn,
+                                        output longint accel_a_rs1,
+                                        output longint accel_a_rs2,
+                                        input bit      accel_d_valid,
                                         input longint  accel_d_result
                                         );
 
@@ -195,7 +198,10 @@ module SpikeBlackBox #(
                                              input         accel_a_ready,
                                              output        accel_a_valid,
                                              output [63:0] accel_a_insn,
+                                             output [63:0] accel_a_rs1,
+                                             output [63:0] accel_a_rs2,
 
+                                             input         accel_d_valid,
                                              input [63:0]  accel_d_result
  );
 
@@ -271,8 +277,13 @@ module SpikeBlackBox #(
    wire                                                    __accel_a_ready;
    bit                                                     __accel_a_valid;
    longint                                                 __accel_a_insn;
+   longint                                                 __accel_a_rs1;
+   longint                                                 __accel_a_rs2;
    reg                                                     __accel_a_valid_reg;
    reg [63:0]                                              __accel_a_insn_reg;
+   reg [63:0]                                              __accel_a_rs1_reg;
+   reg [63:0]                                              __accel_a_rs2_reg;
+   wire                                                    __accel_d_valid;
    longint                                                 __accel_d_result;   
 
 
@@ -343,7 +354,9 @@ module SpikeBlackBox #(
          __accel_a_valid_reg <= 1'b0;
          __accel_a_insn = 64'h0;
          __accel_a_insn_reg <= 64'h0;
-         //__accel_d_result = 64'h0;
+         __accel_a_rs1_reg <= 64'h0;
+         __accel_a_rs2_reg <= 64'h0;
+         __accel_d_result = 64'h0;
          spike_tile_reset(HARTID);
       end else begin
          spike_tile(HARTID, ISA, PMPREGIONS,
@@ -374,7 +387,7 @@ module SpikeBlackBox #(
                     __mmio_a_ready, __mmio_a_valid, __mmio_a_address, __mmio_a_data, __mmio_a_store, __mmio_a_size,
                     mmio_d_valid, mmio_d_data, 
 
-                    __accel_a_ready, __accel_a_valid, __accel_a_insn, __accel_d_result
+                    __accel_a_ready, __accel_a_valid, __accel_a_insn, __accel_a_rs1, __accel_a_rs2, __accel_d_valid, __accel_d_result
                     );
          __insns_retired_reg <= __insns_retired;
 
@@ -412,6 +425,9 @@ module SpikeBlackBox #(
 
          __accel_a_valid_reg <= __accel_a_valid;
          __accel_a_insn_reg <= __accel_a_insn;
+         __acccel_a_rs1_reg <= __accel_a_rs1;
+         __accel_a_rs2_reg <= __accel_a_rs2;
+
       end
    end // always @ (posedge clock)
    assign insns_retired = __insns_retired_reg;
@@ -453,7 +469,10 @@ module SpikeBlackBox #(
 
    assign accel_a_valid = __accel_a_valid_reg;
    assign accel_a_insn = __accel_a_insn_reg;
+   assign accel_a_rs1 = __accel_a_rs1_reg;
+   assign accel_a_rs2 = __accel_a_rs2_reg;
    assign __accel_a_ready = accel_a_ready;
+   assign __accel_d_valid = accel_d_valid;
    assign __accel_d_result = accel_d_result;
 
 endmodule;
