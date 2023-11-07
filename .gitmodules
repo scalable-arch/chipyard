@@ -133,3 +133,6 @@
 [submodule "generators/hardfloat"]
 	path = generators/hardfloat
 	url = https://github.com/ucb-bar/berkeley-hardfloat.git
+[submodule "tools/tidalsim"]
+	path = tools/tidalsim
+	url = git@github.com:euphoric-hardware/tidalsim
