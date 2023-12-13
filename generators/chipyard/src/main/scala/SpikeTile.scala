@@ -151,8 +151,8 @@ class SpikeTile(
   tlMasterXbar.node := TLWidthWidget(64) := TLBuffer() := dcacheNode
   tlMasterXbar.node := TLWidthWidget(8) := TLBuffer() := mmioNode
 
-  override lazy val module = new SpikeTileModuleImp(this) //Some sort of error?
-  val accumulator: AccumulatorExample = LazyModule(new AccumulatorExample(OpcodeSet.all)); 
+  override lazy val module = new SpikeTileModuleImp(this)
+  //Add line below with instantiation of desired accelerator 
 }
 
 class SpikeBlackBox(
@@ -265,12 +265,12 @@ class SpikeBlackBox(
         val ready = Input(Bool())
         val valid = Output(Bool())
         val insn = Output(UInt(64.W))
-        val rs1 = Output(UInt(32.W))
-        val rs2 = Output(UInt(32.W))
+        val rs1 = Output(UInt(64.W))
+        val rs2 = Output(UInt(64.W))
       }
       val d = new Bundle {
         val valid = Input(Bool())
-        val rd = Input(UInt(5.W))
+        val rd = Input(UInt(64.W))
         val result = Input(UInt(64.W))
       }
     }
@@ -407,16 +407,26 @@ class SpikeTileModuleImp(outer: SpikeTile) extends BaseTileModuleImp(outer) {
   spike.io.mmio.d.valid := mmio_tl.d.valid
   spike.io.mmio.d.data := mmio_tl.d.bits.data
 
-  //Accel section
+  /* Begin Accel Section */
+   val to_accel_enq_bits = IO(new Bundle{
+    val insn = UInt(64.W)
+    val rs1 = UInt(64.W)
+    val rs2 = UInt(64.W)
+  })
+
   val to_accel_q = Module(new Queue(UInt(192.W), 1, flow=true, pipe=true))
   spike.io.accel.a.ready := to_accel_q.io.enq.ready && to_accel_q.io.count === 0.U
   to_accel_q.io.enq.valid := spike.io.accel.a.valid
-  to_accel_q.io.enq.bits(63,0) := spike.io.accel.a.insn
-  to_accel_q.io.enq.bits(123,63) := spike.io.accel.a.rs1
-  to_accel_q.io.enq.bits(191,124) := spike.io.accel.a.rs2
+  to_accel_enq_bits.insn := spike.io.accel.a.insn
+  to_accel_enq_bits.rs1 := spike.io.accel.a.rs1
+  to_accel_enq_bits.rs2 := spike.io.accel.a.rs2
+  to_accel_q.io.enq.bits := to_accel_enq_bits.asUInt
+  printf(cf"Enq bits: ${to_accel_enq_bits.insn(63, 0)}\n")
+  printf(cf"RS1 bits: ${to_accel_enq_bits.rs1(63, 0)}\n")
+  printf(cf"RS2 bits: ${to_accel_enq_bits.rs2(63, 0)}\n")
 
-  outer.accumulator.module.io.cmd.valid := to_accel_q.io.deq.valid
-  to_accel_q.io.deq.ready := outer.accumulator.module.io.cmd.ready
+  outer.adder.module.io.cmd.valid := to_accel_q.io.deq.valid
+  to_accel_q.io.deq.ready := outer.adder.module.io.cmd.ready
 
   val inst = Wire(new RoCCInstruction())
   inst.funct := to_accel_q.io.deq.bits(6,0)
@@ -433,27 +443,35 @@ class SpikeTileModuleImp(outer: SpikeTile) extends BaseTileModuleImp(outer) {
   cmd.rs1 := to_accel_q.io.deq.bits(123,64)
   cmd.rs2 := to_accel_q.io.deq.bits(191,124)
   cmd.status := DontCare
+  outer.adder.module.io.cmd.bits := cmd
+  dontTouch(outer.adder.module.io)
 
-  val resp = Wire(new RoCCResponse()) //TODO
-
-  val accumulator = Module(new AccumulatorExampleModuleImp(outer.accumulator))
-  outer.accumulator.module.io.cmd.bits := cmd;
+  val from_accel_enq_bits = IO(new Bundle {
+    val rd = UInt(64.W)
+    val resp = UInt(64.W)
+  })
 
   val from_accel_q = Module(new Queue(UInt(69.W), 1, flow=true, pipe=true)) //rd and result stitched together
-  //from_accel_q.ready := true.B
-  //outer.accumulator.module.io.resp.ready := from_accel_q.io.enq.ready
-  outer.accumulator.module.io.resp.ready := from_accel_q.io.enq.ready && from_accel_q.io.count === 0.U
-  from_accel_q.io.enq.valid := outer.accumulator.module.io.resp.valid
-  from_accel_q.io.enq.bits := {outer.accumulator.module.io.resp.bits.rd; outer.accumulator.module.io.resp.bits.data}
+  outer.adder.module.io.resp.ready := from_accel_q.io.enq.ready && from_accel_q.io.count === 0.U
+  from_accel_q.io.enq.valid := outer.adder.module.io.resp.valid
+
+  from_accel_enq_bits.rd := outer.adder.module.io.resp.bits.rd
+  from_accel_enq_bits.resp := outer.adder.module.io.resp.bits.data
+  from_accel_q.io.enq.bits := from_accel_enq_bits.asUInt
   spike.io.accel.d.valid := from_accel_q.io.deq.valid
   from_accel_q.io.deq.ready := true.B
-  spike.io.accel.d.rd := from_accel_q.io.deq.bits(4,0)
-  spike.io.accel.d.result := from_accel_q.io.deq.bits(68,5) 
+  spike.io.accel.d.rd := from_accel_q.io.deq.bits(68,64)
+  spike.io.accel.d.result := from_accel_q.io.deq.bits(63,0) 
 
   when (to_accel_q.io.deq.fire) {
-    printf(cf"Got accel instruction: ${to_accel_q.io.deq.bits}\n")
+    printf(cf"Got accel instruction: ${to_accel_q.io.deq.bits(63, 0)}\n")
+  }
+
+  when (from_accel_q.io.deq.fire) {
+    printf(cf"Got result: ${from_accel_q.io.deq.bits(68, 5)}\n")
   }
 }
+/* End Accel Section */
 
 class WithNSpikeCores(n: Int = 1, overrideIdOffset: Option[Int] = None) extends Config((site, here, up) => {
   case TilesLocated(InSubsystem) => {

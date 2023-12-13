@@ -7,7 +7,7 @@
 #include <vpi_user.h>
 #include <svdpi.h>
 
-//Not sure I need to include but probably
+/* Includes for accel support */
 #include <riscv/extension.h>
 #include <riscv/rocc.h>
 #include <random>
@@ -132,7 +132,6 @@ private:
   std::vector<size_t> dcache_c_sourceids;
   std::vector<size_t> dcache_mmio_sourceids;
 
-  //Mihai accel
   std::vector<rocc_insn_t> accel_insn_q;
   std::vector<reg_t> accel_reg_q_1;
   std::vector<reg_t> accel_reg_q_2;
@@ -166,7 +165,6 @@ public:
 };
 
 /* Begin accel header file */
-//generic.h
 class generic_t : public extension_t
 {
   public:
@@ -285,7 +283,6 @@ extern "C" void spike_tile(int hartid, char* isa,
                            unsigned char mmio_d_valid,
                            long long int mmio_d_data,
 
-                           //Need to add accelerator info
                            unsigned char accel_a_ready,
                            unsigned char* accel_a_valid,
                            int* accel_a_insn,
@@ -328,11 +325,9 @@ extern "C" void spike_tile(int hartid, char* isa,
                                      log_file->get(),
                                      sout);
 
-    /*Begin accelerator section*/
     std::function<extension_t*()> extension;
     generic_t* my_generic_extension = new generic_t(simif);
     p->register_extension(my_generic_extension);
-    /*End accelerator section*/
 
     p->enable_log_commits();
 
@@ -427,28 +422,26 @@ extern "C" void spike_tile(int hartid, char* isa,
 }
 
 /*Begin Accelerator Section*/
-
 reg_t generic_t::custom0(rocc_insn_t insn, reg_t xs1, reg_t xs2) {
-  printf("[%s] custom0 called, pushing instruction to accelerator queue with opcode: %d\n", name(), insn.funct);
-  //Push to accel_insn_q
+  // printf("[%s] custom0 called, pushing instruction to accelerator queue with opcode, rs1, rs2, rd: %d, %x, %x, %x\n", name(), insn.funct, xs1, xs2, insn.rd);
   simif->push_accel_insn(insn, xs1, xs2);
   return 0;
 }
 
 reg_t generic_t::custom1(rocc_insn_t insn, reg_t xs1, reg_t xs2) {
-  printf("[%s] custom1 called, pushing instruction to accelerator queue with opcode: %d\n", name(), insn.funct);
+  // printf("[%s] custom1 called, pushing instruction to accelerator queue with opcode, rs1, rs2, rd: %d, %x, %x, %x\n", name(), insn.funct, xs1, xs2, insn.rd);
   simif->push_accel_insn(insn, xs1, xs2);
   return 0;
 }
 
 reg_t generic_t::custom2(rocc_insn_t insn, reg_t xs1, reg_t xs2) {
-  printf("[%s] custom2 called, pushing instruction to accelerator queue with opcode: %d\n", name(), insn.funct);
+  // printf("[%s] custom2 called, pushing instruction to accelerator queue with opcode, rs1, rs2, rd: %d, %x, %x, %x\n", name(), insn.funct, xs1, xs2, insn.rd);
   simif->push_accel_insn(insn, xs1, xs2);
   return 0;
 }
 
 reg_t generic_t::custom3(rocc_insn_t insn, reg_t xs1, reg_t xs2) {
-  printf("[%s] custom3 called, pushing instruction to accelerator queue with opcode: %d\n", name(), insn.funct);
+  // printf("[%s] custom3 called, pushing instruction to accelerator queue with opcode, rs1, rs2, rd: %d, %x, %x, %x\n", name(), insn.funct, xs1, xs2, insn.rd);
   simif->push_accel_insn(insn, xs1, xs2);
   return 0;
 }
@@ -791,7 +784,6 @@ bool chipyard_simif_t::handle_cache_access(reg_t addr, size_t len,
   return false;
 }
 
-/*Begin accelerator section*/
 bool chipyard_simif_t::accel_handshake(rocc_insn_t* insn, reg_t* rs1, reg_t* rs2) {
   if (accel_insn_q.empty()) {
     return false;
@@ -803,20 +795,17 @@ bool chipyard_simif_t::accel_handshake(rocc_insn_t* insn, reg_t* rs1, reg_t* rs2
   accel_insn_q.erase(accel_insn_q.begin());
   accel_reg_q_1.erase(accel_reg_q_1.begin());
   accel_reg_q_2.erase(accel_reg_q_2.begin());
-
-  //printf("Proceeding with successful cpu/accel handshake");
   return true;
 }
 
 void chipyard_simif_t::push_accel_insn(rocc_insn_t insn, reg_t rs1, reg_t rs2) {
-  printf("Pushing instruction to accelerator queue\n");
+  // printf("Pushing instruction to accelerator queue\n");
   accel_insn_q.push_back(insn);
   accel_reg_q_1.push_back(rs1);
   accel_reg_q_2.push_back(rs2);
   
   host->switch_to();
 }
-/*End accelerator section*/
 
 bool chipyard_simif_t::icache_a(uint64_t* address, uint64_t* sourceid) {
   if (icache_miss_q.empty() || icache_sourceids.empty()) {
