@@ -1,11 +1,26 @@
 package chipyard
 
-import freechips.rocketchip.config.{Config}
-import freechips.rocketchip.diplomacy.{AsynchronousCrossing}
+import freechips.rocketchip.config.{Config, Parameters}
+import freechips.rocketchip.diplomacy.{AsynchronousCrossing, LazyModule}
+import freechips.rocketchip.tile.{BuildRoCC, OpcodeSet, AdderExample}
 
 // ------------------------------
 // Configs with RoCC Accelerators
 // ------------------------------
+
+class WithAdderAccel extends Config((site, here, up) => {
+  case BuildRoCC => Seq((p: Parameters) => {
+    val accelerator = LazyModule(new AdderExample(OpcodeSet.custom0 | OpcodeSet.custom1)(p))
+    accelerator
+  })
+})
+
+// DOC include start: AdderRocketConfig
+class AdderRocketConfig extends Config(
+  new WithAdderAccel ++
+  new freechips.rocketchip.subsystem.WithNBigCores(1) ++
+  new chipyard.config.WithSystemBusWidth(128) ++
+  new chipyard.config.AbstractConfig)
 
 // DOC include start: GemminiRocketConfig
 class GemminiRocketConfig extends Config(

@@ -1,0 +1,10 @@
+verdiSetActWin -dock widgetDock_MTB_SOURCE_TAB_1
+verdiWindowResize -win $_Verdi_1 "190" "31" "900" "591"
+verdiWindowResize -win $_Verdi_1 "190" "31" "900" "591"
+verdiSetActWin -dock widgetDock_<Decl._Tree>
+verdiDockWidgetSetCurTab -dock widgetDock_<Inst._Tree>
+verdiSetActWin -dock widgetDock_<Inst._Tree>
+verdiDockWidgetSetCurTab -dock widgetDock_<Decl._Tree>
+verdiSetActWin -dock widgetDock_<Decl._Tree>
+verdiWindowResize -win $_Verdi_1 "190" "31" "900" "591"
+debExit

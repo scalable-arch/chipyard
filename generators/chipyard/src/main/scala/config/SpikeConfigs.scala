@@ -6,6 +6,10 @@ import freechips.rocketchip.config.{Config}
 // tile that interacts with the Chipyard SoC
 // as a hardware core would
 
+// class SpikeAdderConfig extends Config(
+//   new chipyard.WithNSpikeCores(1) ++
+//   new chipyard.config.AbstractConfig)
+
 class SpikeConfig extends Config(
   new chipyard.WithNSpikeCores(1) ++
   new chipyard.config.AbstractConfig)

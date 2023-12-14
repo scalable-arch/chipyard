@@ -33,7 +33,6 @@ reg_t generic_t::custom3(rocc_insn_t insn, reg_t xs1, reg_t xs2) {
   return 0;
 }
 
-//Needs semi-colons?
 define_custom_func(generic_t, "generic", generic_custom0, custom0)
 define_custom_func(generic_t, "generic", generic_custom1, custom1)
 define_custom_func(generic_t, "generic", generic_custom2, custom2)
