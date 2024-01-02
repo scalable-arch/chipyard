@@ -3,7 +3,7 @@ package chipyard
 import org.chipsalliance.cde.config.{Config}
 import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.subsystem.{MBUS, SBUS}
-import testchipip.{OBUS}
+
 
 // 
 class ExampleConfig extends Config (
@@ -67,11 +67,15 @@ class ExampleChipConfig extends Config(
   // ==================================
 
   // External memory section
-  new testchipip.serdes.WithSerialTLClientIdBits(1) ++                     // support up to 1 << 4 simultaneous requests from serialTL port
+  new testchipip.serdes.WithSerialTLClientIdBits(1) ++                    // support up to 1 << 4 simultaneous requests from serialTL port
   new testchipip.serdes.WithSerialTLWidth(1) ++                           // fatten the serialTL interface to improve testing performance
-  new testchipip.serdes.WithDefaultSerialTL ++                             // use serialized tilelink port to external serialadapter/harnessRAM
   new testchipip.serdes.WithSerialTLClockDirection(provideClockFreqMHz = Some(75)) ++ // bringup board drives the clock for the serial-tl receiver on the chip, use 75MHz clock
-
+  new testchipip.serdes.WithSerialTL(Seq(                                 // add a serial-tilelink interface
+      testchipip.serdes.SerialTLParams(
+        client = Some(testchipip.serdes.SerialTLClientParams(idBits=4)),  // serial-tilelink interface will master the FBUS, and support 4 idBits
+        width = 32                                                        // serial-tilelink interface with 32 lanes
+      )
+    )) ++
   // new testchipip.WithNoSerialTL ++
 
   new freechips.rocketchip.subsystem.WithNoMemPort ++             // remove AXI DRAM memory port
@@ -88,7 +92,7 @@ class ExampleChipConfig extends Config(
 
   // Core section
   new chipyard.config.WithBootROM ++                                // use default bootrom
-  new testchipip.iobinders.WithCustomBootPin ++                               // add a custom-boot-pin to support pin-driven boot address
+  new chipyard.iobinders.WithCustomBootPin ++                               // add a custom-boot-pin to support pin-driven boot address
   new testchipip.boot.WithBootAddrReg ++                                 // add a boot-addr-reg for configurable boot address                            // use default bootrom
 
   // ==================================
