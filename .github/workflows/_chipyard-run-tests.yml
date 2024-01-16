@@ -4,8 +4,7 @@ on:
   # run ci on pull requests targeting following branches (runs on the merge commit)
   pull_request:
     branches:
-#      - main
-      - action-test
+      - main
       - '1.[0-9]*.x'
 
 defaults:
@@ -23,8 +22,7 @@ env:
 jobs:
   cancel-prior-workflows:
     name: cancel-prior-workflows
-#    runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.11.0
