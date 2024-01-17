@@ -5,7 +5,8 @@ on:
   # branch : action-test0  
   pull_request:
     branches:
-      - action-test0
+      - main
+      - '1.[0-9]*.x'  
 
 defaults:
   run:
