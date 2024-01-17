@@ -6,7 +6,7 @@ runs:
     - name: Create conda environments
       run: |
         if conda env list | grep -q "envs/${{ env.conda-env-name-no-time }}"; then
-          echo "Using pre-existing conda environments with prefix ${{ env.conda-env-name-no-time }}"
+          echo "HyunseoLim,Using pre-existing conda environments with prefix ${{ env.conda-env-name-no-time }}"
         else
           echo "Creating a conda environment for each toolchain with the toolchain installed"
           conda activate base
