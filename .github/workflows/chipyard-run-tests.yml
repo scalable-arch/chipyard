@@ -2,10 +2,10 @@ name: chipyard-ci-process
 
 on:
   # run ci on pull requests targeting following branches (runs on the merge commit)
+  # branch : action-test0  
   pull_request:
     branches:
       - main
-      - '1.[0-9]*.x'
 
 defaults:
   run:
