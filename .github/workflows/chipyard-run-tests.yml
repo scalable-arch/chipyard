@@ -2,6 +2,7 @@ name: chipyard-ci-process
 
 on:
   # run ci on pull requests targeting following branches (runs on the merge commit)
+  # Hyunseo Lim edited  
   pull_request:
     branches:
       - main
