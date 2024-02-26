@@ -250,6 +250,8 @@ jobs:
         uses: ./.github/actions/git-workaround
       - name: Create conda env
         uses: ./.github/actions/create-conda-env
+      - name: Check env
+        run: env > action_env.txt
       - name: Build RTL on self-hosted
         uses: ./.github/actions/prepare-rtl
         with:

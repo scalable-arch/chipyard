@@ -1,0 +1,536 @@
+Setting up official Chipyard release: 1.10.0
++ git_submodule_exclude _skip
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/esp-tools/esp-tools-feedstock
++ git config --local submodule.toolchains/esp-tools/esp-tools-feedstock.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/esp-tools/riscv-isa-sim
++ git config --local submodule.toolchains/esp-tools/riscv-isa-sim.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/esp-tools/riscv-pk
++ git config --local submodule.toolchains/esp-tools/riscv-pk.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/esp-tools/riscv-tests
++ git config --local submodule.toolchains/esp-tools/riscv-tests.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/riscv-tools/riscv-isa-sim
++ git config --local submodule.toolchains/riscv-tools/riscv-isa-sim.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/riscv-tools/riscv-openocd
++ git config --local submodule.toolchains/riscv-tools/riscv-openocd.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/riscv-tools/riscv-pk
++ git config --local submodule.toolchains/riscv-tools/riscv-pk.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/riscv-tools/riscv-tests
++ git config --local submodule.toolchains/riscv-tools/riscv-tests.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/riscv-tools/riscv-tools-feedstock
++ git config --local submodule.toolchains/riscv-tools/riscv-tools-feedstock.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip toolchains/libgloss
++ git config --local submodule.toolchains/libgloss.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip generators/sha3
++ git config --local submodule.generators/sha3.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip generators/gemmini
++ git config --local submodule.generators/gemmini.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip sims/firesim
++ git config --local submodule.sims/firesim.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip software/nvdla-workload
++ git config --local submodule.software/nvdla-workload.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip software/coremark
++ git config --local submodule.software/coremark.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip software/firemarshal
++ git config --local submodule.software/firemarshal.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip software/spec2017
++ git config --local submodule.software/spec2017.update none
++ for name in toolchains/*-tools/* toolchains/libgloss generators/sha3 generators/gemmini sims/firesim software/nvdla-workload software/coremark software/firemarshal software/spec2017 vlsi/hammer-mentor-plugins
++ _skip vlsi/hammer-mentor-plugins
++ git config --local submodule.vlsi/hammer-mentor-plugins.update none
++ git submodule update --init --recursive
+Skipping submodule 'generators/gemmini'
+Skipping submodule 'generators/sha3'
+Skipping submodule 'sims/firesim'
+Skipping submodule 'software/coremark'
+Skipping submodule 'software/firemarshal'
+Skipping submodule 'software/nvdla-workload'
+Skipping submodule 'software/spec2017'
+Skipping submodule 'toolchains/esp-tools/esp-tools-feedstock'
+Skipping submodule 'toolchains/esp-tools/riscv-isa-sim'
+Skipping submodule 'toolchains/esp-tools/riscv-pk'
+Skipping submodule 'toolchains/esp-tools/riscv-tests'
+Skipping submodule 'toolchains/libgloss'
+Skipping submodule 'toolchains/riscv-tools/riscv-isa-sim'
+Skipping submodule 'toolchains/riscv-tools/riscv-openocd'
+Skipping submodule 'toolchains/riscv-tools/riscv-pk'
+Skipping submodule 'toolchains/riscv-tools/riscv-tests'
+Skipping submodule 'toolchains/riscv-tools/riscv-tools-feedstock'
+Skipping submodule 'vlsi/hammer-mentor-plugins'
+/media/0/chipyard/generators/constellation /media/0/chipyard
+Installing espresso to /media/0/chipyard/.conda-env/esp-tools
+Make sure /media/0/chipyard/.conda-env/esp-tools/bin is on your PATH before using Constellation
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /media/0/chipyard/generators/constellation/espresso/build
+[100%] Built target espresso
+Install the project...
+-- Install configuration: ""
+-- Installing: /media/0/chipyard/.conda-env/esp-tools/bin/espresso
+Espresso has been installed to /media/0/chipyard/.conda-env/esp-tools/bin/espresso
+/media/0/chipyard
+make: Entering directory '/media/0/chipyard/sims/verilator'
+Running with RISCV=/media/0/chipyard/.conda-env/esp-tools
+rm -rf /media/0/chipyard/.classpath_cache /media/0/chipyard/sims/verilator/generated-src simulator-*
+make: Leaving directory '/media/0/chipyard/sims/verilator'
+make: Entering directory '/media/0/chipyard/sims/verilator'
+Running with RISCV=/media/0/chipyard/.conda-env/esp-tools
+mkdir -p /media/0/chipyard/.classpath_cache/
+mkdir -p /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config
+cd /media/0/chipyard && java -jar /media/0/chipyard/generators/rocket-chip/sbt-launch.jar -Dsbt.ivy.home=/media/0/chipyard/.ivy2 -Dsbt.global.base=/media/0/chipyard/.sbt -Dsbt.boot.directory=/media/0/chipyard/.sbt/boot/ -Dsbt.color=always -Dsbt.supershell=false -Dsbt.server.forcestart=true ";project chipyard; set assembly / assemblyOutputPath := file(\"/media/0/chipyard/.classpath_cache/chipyard.jar\"); assembly" && touch /media/0/chipyard/.classpath_cache/chipyard.jar
+mkdir -p /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/
+echo "emittedLineLength=2048,noAlwaysComb,disallowLocalVariables,verifLabels,locationInfoStyle=wrapInAtSquareBracket" > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/.mfc_lowering_options
+cp -f /media/0/chipyard/generators/testchipip/src/main/resources/testchipip/bootrom/bootrom.rv64.img /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/bootrom.rv64.img
+cp -f /media/0/chipyard/generators/testchipip/src/main/resources/testchipip/bootrom/bootrom.rv32.img /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/bootrom.rv32.img
+[0m[[0m[0minfo[0m] [0m[0mwelcome to sbt 1.8.2 (N/A Java 20-internal)[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project chipyard-build from plugins.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading project definition from /media/0/chipyard/project[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project chipyardRoot from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project hardfloat from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project testchipip from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project barf from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project constellation from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project icenet from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project hwacha from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project boom from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project cva6 from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project ibex from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project sodor from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project gemmini from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project tapeout from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project sim-build from plugins.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading project definition from /media/0/chipyard/sims/firesim/sim/project[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project firesim from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project targetutils from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project midas from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mresolving key references (38475 settings) ...[0m
+[0m[[0m[0minfo[0m] [0m[0mset current project to chipyardRoot (in build file:/media/0/chipyard/)[0m
+[0m[[0m[0minfo[0m] [0m[0mset current project to chipyard (in build file:/media/0/chipyard/)[0m
+[0m[[0m[0minfo[0m] [0m[0mDefining assembly / assemblyOutputPath[0m
+[0m[[0m[0minfo[0m] [0m[0mThe new value will be used by assembly[0m
+[0m[[0m[0minfo[0m] [0m[0mReapplying settings...[0m
+[0m[[0m[0minfo[0m] [0m[0mset current project to chipyard (in build file:/media/0/chipyard/)[0m
+[0m[[0m[33mwarn[0m] [0m[0mmultiple main classes detected: run 'show discoveredMainClasses' to see the list[0m
+[0m[[0m[33mwarn[0m] [0m[0mmultiple main classes detected: run 'show discoveredMainClasses' to see the list[0m
+[0m[[0m[0minfo[0m] [0m[0m112 file(s) merged using strategy 'Rename' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0m194 file(s) merged using strategy 'Rename (Custom)' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0m20 file(s) merged using strategy 'Deduplicate' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0m136 file(s) merged using strategy 'Discard' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0m4 file(s) merged using strategy 'FilterDistinctLines' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0mBuilt: /media/0/chipyard/.classpath_cache/chipyard.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mJar hash: 84dbc663d689ab8a534e4dd884d82276cf071b69[0m
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 15 s, completed Feb 26, 2024, 2:31:35 PM[0m
+[0Jmkdir -p /media/0/chipyard/.classpath_cache/
+cd /media/0/chipyard && java -jar /media/0/chipyard/generators/rocket-chip/sbt-launch.jar -Dsbt.ivy.home=/media/0/chipyard/.ivy2 -Dsbt.global.base=/media/0/chipyard/.sbt -Dsbt.boot.directory=/media/0/chipyard/.sbt/boot/ -Dsbt.color=always -Dsbt.supershell=false -Dsbt.server.forcestart=true ";project tapeout; set assembly / assemblyOutputPath := file(\"/media/0/chipyard/.classpath_cache/tapeout.jar\"); assembly" && touch /media/0/chipyard/.classpath_cache/tapeout.jar
+mkdir -p /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config
+(set -o pipefail && 	cd /media/0/chipyard && java -cp /media/0/chipyard/.classpath_cache/chipyard.jar chipyard.Generator  --target-dir /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config --name chipyard.harness.TestHarness.CVA6Config --top-module chipyard.harness.TestHarness --legacy-configs chipyard:CVA6Config  | tee /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.chisel.log)
+[0m[[0m[0minfo[0m] [0m[0mwelcome to sbt 1.8.2 (N/A Java 20-internal)[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project chipyard-build from plugins.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading project definition from /media/0/chipyard/project[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project chipyardRoot from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project hardfloat from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project testchipip from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project barf from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project constellation from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project icenet from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project hwacha from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project boom from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project cva6 from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project ibex from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project sodor from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project gemmini from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project tapeout from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project sim-build from plugins.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading project definition from /media/0/chipyard/sims/firesim/sim/project[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project firesim from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project targetutils from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project midas from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mresolving key references (38475 settings) ...[0m
+L2 InclusiveCache Client Map:
+	0 <= serial-tl
+	1 <= cva6-mem-port-axi4 ID#0
+	2 <= cva6-mem-port-axi4 ID#1
+	3 <= cva6-mem-port-axi4 ID#2
+	4 <= cva6-mem-port-axi4 ID#3
+	5 <= cva6-mem-port-axi4 ID#4
+	6 <= cva6-mem-port-axi4 ID#5
+	7 <= cva6-mem-port-axi4 ID#6
+	8 <= cva6-mem-port-axi4 ID#7
+	9 <= cva6-mem-port-axi4 ID#8
+	10 <= cva6-mem-port-axi4 ID#9
+	11 <= cva6-mem-port-axi4 ID#10
+	12 <= cva6-mem-port-axi4 ID#11
+	13 <= cva6-mem-port-axi4 ID#12
+	14 <= cva6-mem-port-axi4 ID#13
+	15 <= cva6-mem-port-axi4 ID#14
+	16 <= cva6-mem-port-axi4 ID#15
+
+make[1]: Entering directory '/media/0/chipyard'
+mkdir -p /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/
+echo "\`define WT_DCACHE" >> def.v;  echo "\`define DISABLE_TRACER" >> def.v;  echo "\`define SRAM_NO_INIT" >> def.v;  echo "\`define VERILATOR" >> def.v; 
+echo "\`undef WT_DCACHE" >> undef.v;  echo "\`undef DISABLE_TRACER" >> undef.v;  echo "\`undef SRAM_NO_INIT" >> undef.v;  echo "\`undef VERILATOR" >> undef.v; 
+cat def.v /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include/riscv_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/riscv-dbg/src/dm_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include/ariane_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include/std_cache_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include/wt_cache_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi/src/axi_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/register_interface/src/reg_intf.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/register_interface/src/reg_intf_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include/axi_intf.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/tb/ariane_soc_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include/ariane_axi_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include/traced_instr_pkg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/alu.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/amo_buffer.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/ariane_regfile_ff.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/ariane.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi_shim.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/branch_unit.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/commit_stage.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/compressed_decoder.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/controller.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/csr_buffer.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/csr_regfile.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/decoder.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/dromajo_ram.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/ex_stage.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu_wrap.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/id_stage.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/instr_realign.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/issue_read_operands.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/issue_stage.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/load_store_unit.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/load_unit.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/mmu.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/multiplier.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/mult.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/perf_counters.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/ptw.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/re_name.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/scoreboard.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/serdiv.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/store_buffer.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/store_unit.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/tlb.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_cast_multi.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_classifier.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_divsqrt_multi.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_fma_multi.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_fma.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_noncomp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_opgroup_block.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_opgroup_fmt_slice.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_opgroup_multifmt_slice.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_rounding.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpnew_top.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpu_div_sqrt_mvp/hdl/div_sqrt_top_mvp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpu_div_sqrt_mvp/hdl/iteration_div_sqrt_mvp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpu_div_sqrt_mvp/hdl/norm_div_sqrt_mvp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpu_div_sqrt_mvp/hdl/nrbd_nrsc_mvp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/frontend/bht.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/frontend/btb.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/frontend/frontend.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/frontend/instr_queue.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/frontend/instr_scan.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/frontend/ras.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/cva6_icache.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/wt_dcache_wbuffer.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/wt_dcache.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/wt_dcache_missunit.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/wt_dcache_mem.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/wt_dcache_ctrl.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/wt_cache_subsystem.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/cache_subsystem/wt_axi_adapter.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi_riscv_atomics/src/axi_res_tbl.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi_riscv_atomics/src/axi_riscv_amos_alu.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi_riscv_atomics/src/axi_riscv_amos.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi_riscv_atomics/src/axi_riscv_atomics.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi_riscv_atomics/src/axi_riscv_atomics_wrap.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi_riscv_atomics/src/axi_riscv_lrsc.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/exp_backoff.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/util/axi_master_connect.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/util/sram.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpga-support/rtl/SyncSpRamBeNx64.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/unread.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/stream_arbiter.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/stream_arbiter_flushable.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/fifo_v3.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/lzc.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/popcount.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/rr_arb_tree.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/lfsr_8bit.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/src/shift_reg.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/pmp/src/pmp.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/pmp/src/pmp_entry.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/CVA6CoreBlackbox.sv undef.v > combined.sv
+sed -i '/l15.tmp.h/d' combined.sv
+sed -i '/define.tmp.h/d' combined.sv
+/media/0/chipyard/scripts/insert-includes.py combined.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/CVA6CoreBlackbox.preprocessed.sv /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi/include /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/pmp/include /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/include /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpga-support/behav/common/include /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/tb/flexfloat/include /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/common_cells/include 
+[INFO] Replaces includes from: combined.sv
+[INFO] Searching following dirs for includes: ['/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/include', '/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/axi/include', '/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/pmp/include', '/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/common_cells/include', '/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpga-support/behav/common/include', '/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/tb/flexfloat/include', '/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/cva6/src/fpu/src/common_cells/include']
+[INFO] Success. Writing output to: /media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc/CVA6CoreBlackbox.preprocessed.sv
+rm -rf combined.sv def.v undef.v
+make[1]: Leaving directory '/media/0/chipyard/generators/cva6/src/main/resources/cva6/vsrc'
+Interrupt map (2 harts 1 interrupts):
+  [1, 1] => uart_0
+
+[0m[[0m[0minfo[0m] [0m[0mset current project to chipyardRoot (in build file:/media/0/chipyard/)[0m
+[0m[[0m[0minfo[0m] [0m[0mset current project to tapeout (in build file:/media/0/chipyard/)[0m
+Clock subsystem_pbus_0: using diplomatically specified frequency of 500.0.
+Clock subsystem_mbus_0: using diplomatically specified frequency of 500.0.
+/dts-v1/;
+
+/ {
+	#address-cells = <1>;
+	#size-cells = <1>;
+	compatible = "ucb-bar,chipyard-dev";
+	model = "ucb-bar,chipyard";
+	L23: aliases {
+		serial0 = &L17;
+	};
+	L10: chosen {
+		stdout-path = &L17;
+	};
+	L22: cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		timebase-frequency = <1000000>;
+		L5: cpu@0 {
+			clock-frequency = <1700000000>;
+			compatible = "openhwgroup,cva6", "riscv";
+			d-cache-block-size = <64>;
+			d-cache-sets = <64>;
+			d-cache-size = <16384>;
+			d-tlb-sets = <1>;
+			d-tlb-size = <32>;
+			device_type = "cpu";
+			hardware-exec-breakpoint-count = <0>;
+			i-cache-block-size = <64>;
+			i-cache-sets = <64>;
+			i-cache-size = <16384>;
+			i-tlb-sets = <1>;
+			i-tlb-size = <32>;
+			mmu-type = "riscv,sv39";
+			next-level-cache = <&L3>;
+			reg = <0x0>;
+			riscv,isa = "rv64imafdczicsr_zifencei_zihpm";
+			status = "okay";
+			timebase-frequency = <1000000>;
+			tlb-split;
+			L4: interrupt-controller {
+				#interrupt-cells = <1>;
+				compatible = "riscv,cpu-intc";
+				interrupt-controller;
+			};
+		};
+	};
+	L24: htif {
+		compatible = "ucb,htif0";
+	};
+	L13: memory@80000000 {
+		device_type = "memory";
+		reg = <0x80000000 0x10000000>;
+	};
+	L21: soc {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		compatible = "ucb-bar,chipyard-soc", "simple-bus";
+		ranges;
+		L16: boot-address-reg@4000 {
+			reg = <0x4000 0x1000>;
+			reg-names = "control";
+		};
+		L3: cache-controller@2010000 {
+			cache-block-size = <64>;
+			cache-level = <2>;
+			cache-sets = <1024>;
+			cache-size = <524288>;
+			cache-unified;
+			compatible = "sifive,inclusivecache0", "cache";
+			next-level-cache = <&L13>;
+			reg = <0x2010000 0x1000>;
+			reg-names = "control";
+			sifive,mshr-count = <7>;
+		};
+		L7: clint@2000000 {
+			compatible = "riscv,clint0";
+			interrupts-extended = <&L4 3 &L4 7>;
+			reg = <0x2000000 0x10000>;
+			reg-names = "control";
+		};
+		L18: clock-gater@100000 {
+			reg = <0x100000 0x1000>;
+			reg-names = "control";
+		};
+		L8: debug-controller@0 {
+			compatible = "sifive,debug-013", "riscv,debug-013";
+			debug-attach = "jtag";
+			interrupts-extended = <&L4 65535>;
+			reg = <0x0 0x1000>;
+			reg-names = "control";
+		};
+		L1: error-device@3000 {
+			compatible = "sifive,error0";
+			reg = <0x3000 0x1000>;
+		};
+		L6: interrupt-controller@c000000 {
+			#interrupt-cells = <1>;
+			compatible = "riscv,plic0";
+			interrupt-controller;
+			interrupts-extended = <&L4 11 &L4 9>;
+			reg = <0xc000000 0x4000000>;
+			reg-names = "control";
+			riscv,max-priority = <1>;
+			riscv,ndev = <1>;
+		};
+		L15: rom@10000 {
+			compatible = "sifive,rom0";
+			reg = <0x10000 0x10000>;
+			reg-names = "mem";
+		};
+		L17: serial@54000000 {
+			clocks = <&L0>;
+			compatible = "sifive,uart0";
+			interrupt-parent = <&L6>;
+			interrupts = <1>;
+			reg = <0x54000000 0x1000>;
+			reg-names = "control";
+		};
+		L2: subsystem_mbus_clock {
+			#clock-cells = <0>;
+			clock-frequency = <500000000>;
+			clock-output-names = "subsystem_mbus_clock";
+			compatible = "fixed-clock";
+		};
+		L0: subsystem_pbus_clock {
+			#clock-cells = <0>;
+			clock-frequency = <500000000>;
+			clock-output-names = "subsystem_pbus_clock";
+			compatible = "fixed-clock";
+		};
+		L19: tile-reset-setter@110000 {
+			reg = <0x110000 0x1000>;
+			reg-names = "control";
+		};
+	};
+};
+
+Generated Address Map
+	       0 -     1000 ARWX  debug-controller@0
+	    3000 -     4000 ARWX  error-device@3000
+	    4000 -     5000 ARW   boot-address-reg@4000
+	   10000 -    20000  R X  rom@10000
+	  100000 -   101000 ARW   clock-gater@100000
+	  110000 -   111000 ARW   tile-reset-setter@110000
+	 2000000 -  2010000 ARW   clint@2000000
+	 2010000 -  2011000 ARW   cache-controller@2010000
+	 c000000 - 10000000 ARW   interrupt-controller@c000000
+	54000000 - 54001000 ARW   serial@54000000
+	80000000 - 90000000 ARWXC memory@80000000
+
+IOCells generated by IOBinders:
+  IOBinder for interface testchipip.CanHavePeripheryTLSerial generated:
+    35 X GenericDigitalInIOCell
+    34 X GenericDigitalOutIOCell
+  IOBinder for interface testchipip.CanHavePeripheryCustomBootPin generated:
+    1 X GenericDigitalInIOCell
+  IOBinder for interface sifive.blocks.devices.uart.HasPeripheryUARTModuleImp generated:
+    1 X GenericDigitalInIOCell
+    1 X GenericDigitalOutIOCell
+  IOBinder for interface freechips.rocketchip.devices.debug.HasPeripheryDebug generated:
+    3 X GenericDigitalInIOCell
+    1 X GenericDigitalOutIOCell
+
+  Total generated 76 IOCells:
+    40 X GenericDigitalInIOCell
+    36 X GenericDigitalOutIOCell
+Harness binder clock is 100.0
+[0m[[0m[0minfo[0m] [0m[0mDefining assembly / assemblyOutputPath[0m
+[0m[[0m[0minfo[0m] [0m[0mThe new value will be used by assembly[0m
+[0m[[0m[0minfo[0m] [0m[0mReapplying settings...[0m
+[0m[[0m[0minfo[0m] [0m[0mset current project to tapeout (in build file:/media/0/chipyard/)[0m
+echo "$mfc_extra_anno_contents" > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.extrafirtool.anno.json
+echo "$sfc_extra_low_transforms_anno_contents" > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.extrasfc.anno.json
+jq -s '[.[][]]' /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.anno.json /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.extrafirtool.anno.json > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.extra.anno.json
+echo  none > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/.sfc_level
+echo ""  > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/.extra_firrtl_options
+if [ none = low ]; then jq -s '[.[][]]' /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.extra.anno.json /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.extrasfc.anno.json > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.appended.anno.json; fi
+if [ none = none ]; then cat /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.extra.anno.json > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.appended.anno.json; fi
+touch /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.appended.anno.json
+[0m[[0m[33mwarn[0m] [0m[0mmultiple main classes detected: run 'show discoveredMainClasses' to see the list[0m
+[0m[[0m[0minfo[0m] [0m[0m19 file(s) merged using strategy 'Rename' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0m194 file(s) merged using strategy 'Rename (Custom)' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0m84 file(s) merged using strategy 'Discard' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0m5 file(s) merged using strategy 'FilterDistinctLines' (Run the task at debug level to see the details)[0m
+[0m[[0m[0minfo[0m] [0m[0mBuilt: /media/0/chipyard/.classpath_cache/tapeout.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mJar hash: 8d41d75825fead9bc43fff4d10ea044bf2abb35a[0m
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 4 s, completed Feb 26, 2024, 2:31:49 PM[0m
+[0Jrm -rf /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral
+cd /media/0/chipyard && java -cp /media/0/chipyard/.classpath_cache/tapeout.jar barstools.tapeout.transforms.GenerateModelStageMain  --no-dedup --output-file /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.sfc --output-annotation-file /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.sfc.anno.json --target-dir /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral --input-file /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.fir --annotation-file /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.appended.anno.json --log-level info --allow-unrecognized-annotations -X none 
+======== Starting firrtl.stage.phases.ConvertCompilerAnnotations ========
+-----------------------------------------------------------------------------------
+
+Time: 14.6 ms
+======== Finished firrtl.stage.phases.ConvertCompilerAnnotations ========
+======== Starting firrtl.stage.phases.AddDefaults ========
+--------------------------------------------------------------------
+
+Time: 13.2 ms
+======== Finished firrtl.stage.phases.AddDefaults ========
+======== Starting firrtl.stage.phases.AddImplicitEmitter ========
+---------------------------------------------------------------------------
+
+Time: 13.8 ms
+======== Finished firrtl.stage.phases.AddImplicitEmitter ========
+======== Starting firrtl.stage.phases.Checks ========
+---------------------------------------------------------------
+
+Time: 18.1 ms
+======== Finished firrtl.stage.phases.Checks ========
+======== Starting firrtl.stage.phases.AddCircuit ========
+-------------------------------------------------------------------
+
+Time: 3159.8 ms
+======== Finished firrtl.stage.phases.AddCircuit ========
+======== Starting firrtl.stage.phases.AddImplicitOutputFile ========
+------------------------------------------------------------------------------
+
+Time: 11.1 ms
+======== Finished firrtl.stage.phases.AddImplicitOutputFile ========
+======== Starting firrtl.stage.phases.Compiler ========
+Computed transform order in: 1.4 ms
+Determined Transform order that will be executed:
+  firrtl.stage.transforms.Compiler
+  ├── firrtl.transforms.BlackBoxSourceHelper
+  └── firrtl.ChirrtlEmitter
+======== Starting firrtl.transforms.BlackBoxSourceHelper ========
+---------------------------------------------------------------------------
+
+Time: 12.9 ms
+======== Finished firrtl.transforms.BlackBoxSourceHelper ========
+======== Starting firrtl.ChirrtlEmitter ========
+----------------------------------------------------------
+
+Time: 248.7 ms
+======== Finished firrtl.ChirrtlEmitter ========
+Total FIRRTL Compile Time: 268.4 ms
+-----------------------------------------------------------------
+
+Time: 312.3 ms
+======== Finished firrtl.stage.phases.Compiler ========
+mv /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.sfc.lo.fir /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.sfc.fir 2> /dev/null # Optionally change file type when SFC generates LowFIRRTL
+firtool \
+	--format=fir \
+	--dedup \
+	--export-module-hierarchy \
+	--emit-metadata \
+	--verify-each=true \
+	--warn-on-unprocessed-annotations \
+	--disable-annotation-classless \
+	--disable-annotation-unknown \
+	--mlir-timing \
+	--lowering-options=emittedLineLength=2048,noAlwaysComb,disallowLocalVariables,verifLabels,locationInfoStyle=wrapInAtSquareBracket \
+	--repl-seq-mem \
+	--repl-seq-mem-file=/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.mems.conf \
+	--repl-seq-mem-circuit=TestHarness \
+	--annotation-file=/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.sfc.anno.json \
+	--split-verilog \
+	-o /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral \
+	/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.sfc.fir
+mv /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.sfc.mems.conf /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.mems.conf 2> /dev/null
+sed -i 's/.*/& /' /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.mems.conf # need trailing space for SFC macrocompiler
+/media/0/chipyard/scripts/uniquify-module-names.py \
+	--model-hier-json /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/model_module_hierarchy.json \
+	--top-hier-json /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/top_module_hierarchy.json \
+	--in-all-filelist /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/filelist.f \
+	--dut ChipTop \
+	--model TestHarness \
+	--target-dir /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral \
+	--out-dut-filelist /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.top.f \
+	--out-model-filelist /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.model.f \
+	--out-model-hier-json /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/model_module_hierarchy.uniquified.json \
+	--gcpath /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -i s/"plusarg_reader "/"plusarg_reader_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TestHarness.sv
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -i s/"module ResetCatchAndSync_d3"/"module ResetCatchAndSync_d3_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/ResetCatchAndSync_d3_TestHarness_UNIQUIFIED.sv
+sed -i s/"ResetCatchAndSync_d3 "/"ResetCatchAndSync_d3_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TestHarness.sv
+sed -i s/"module UARTRx"/"module UARTRx_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/UARTRx_TestHarness_UNIQUIFIED.sv
+sed -i s/"UARTRx "/"UARTRx_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/UARTAdapter.sv
+sed -i s/"module UARTTx"/"module UARTTx_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/UARTTx_TestHarness_UNIQUIFIED.sv
+sed -i s/"UARTTx "/"UARTTx_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/UARTAdapter.sv
+sed -i s/"module AsyncResetSynchronizerShiftReg_w1_d3_i0"/"module AsyncResetSynchronizerShiftReg_w1_d3_i0_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/AsyncResetSynchronizerShiftReg_w1_d3_i0_TestHarness_UNIQUIFIED.sv
+sed -i s/"AsyncResetSynchronizerShiftReg_w1_d3_i0 "/"AsyncResetSynchronizerShiftReg_w1_d3_i0_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/ResetCatchAndSync_d3_TestHarness_UNIQUIFIED.sv
+sed -i s/"module HellaPeekingArbiter"/"module HellaPeekingArbiter_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/HellaPeekingArbiter_TestHarness_UNIQUIFIED.sv
+sed -i s/"HellaPeekingArbiter "/"HellaPeekingArbiter_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TLSerdesser_1.sv
+sed -i s/"module GenericSerializer"/"module GenericSerializer_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/GenericSerializer_TestHarness_UNIQUIFIED.sv
+sed -i s/"GenericSerializer "/"GenericSerializer_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TLSerdesser_1.sv
+sed -i s/"module GenericDeserializer"/"module GenericDeserializer_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/GenericDeserializer_TestHarness_UNIQUIFIED.sv
+sed -i s/"GenericDeserializer "/"GenericDeserializer_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TLSerdesser_1.sv
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -i s/"plusarg_reader "/"plusarg_reader_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/UARTTx_TestHarness_UNIQUIFIED.sv
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -i s/"module AsyncResetSynchronizerPrimitiveShiftReg_d3_i0"/"module AsyncResetSynchronizerPrimitiveShiftReg_d3_i0_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/AsyncResetSynchronizerPrimitiveShiftReg_d3_i0_TestHarness_UNIQUIFIED.sv
+sed -i s/"AsyncResetSynchronizerPrimitiveShiftReg_d3_i0 "/"AsyncResetSynchronizerPrimitiveShiftReg_d3_i0_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/AsyncResetSynchronizerShiftReg_w1_d3_i0_TestHarness_UNIQUIFIED.sv
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -i s/"plusarg_reader "/"plusarg_reader_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TLMonitor_56.sv
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -i s/"plusarg_reader "/"plusarg_reader_TestHarness_UNIQUIFIED "/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TLMonitor_57.sv
+sed -i s/"module plusarg_reader"/"module plusarg_reader_TestHarness_UNIQUIFIED"/ /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/plusarg_reader_TestHarness_UNIQUIFIED.v
+sed -e 's;^;/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/;' /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/firrtl_black_box_resource_files.f > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.bb.f
+sed -i 's/\.\///' /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.top.f
+sed -i 's/\.\///' /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.model.f
+sed -i 's/\.\///' /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.bb.f
+sort -u /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.top.f /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.model.f /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.bb.f > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.all.f
+cp -f /media/0/chipyard/generators/rocket-chip/src/main/resources/vsrc/TestDriver.v /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral
+/media/0/chipyard/scripts/split-mems-conf.py \
+	--in-smems-conf /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.mems.conf \
+	--in-model-hrchy-json /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/model_module_hierarchy.uniquified.json \
+	--dut-module-name ChipTop \
+	--model-module-name TestHarness \
+	--out-dut-smems-conf /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.top.mems.conf \
+	--out-model-smems-conf /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.model.mems.conf
+echo "/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/TestDriver.v" >> /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/sim_files.f;
+cd /media/0/chipyard && java -cp /media/0/chipyard/.classpath_cache/tapeout.jar barstools.macros.MacroCompiler -n /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.top.mems.conf -v /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/chipyard.harness.TestHarness.CVA6Config.top.mems.v -f /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.top.mems.fir --mode synflops
+cd /media/0/chipyard && java -cp /media/0/chipyard/.classpath_cache/tapeout.jar barstools.macros.MacroCompiler  -n /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.model.mems.conf -v /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/chipyard.harness.TestHarness.CVA6Config.model.mems.v -f /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.model.mems.fir --mode synflops
+sort -u /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/sim_files.f /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.all.f | grep -v '.*\.\(svh\|h\)$' > /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/sim_files.common.f
+echo "/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/chipyard.harness.TestHarness.CVA6Config.top.mems.v" >> /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/sim_files.common.f
+echo "/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/chipyard.harness.TestHarness.CVA6Config.model.mems.v" >> /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/sim_files.common.f
+rm -rf /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config
+mkdir -p /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config
+verilator --main --timing --cc --exe -CFLAGS " -O3 -std=c++17 -I/media/0/chipyard/.conda-env/esp-tools/include -I/media/0/chipyard/tools/DRAMSim2 -I/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral   -DVERILATOR -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.plusArgs" -LDFLAGS " -L/media/0/chipyard/.conda-env/esp-tools/lib -Wl,-rpath,/media/0/chipyard/.conda-env/esp-tools/lib -L/media/0/chipyard/sims/verilator -L/media/0/chipyard/tools/DRAMSim2  -lfesvr -ldramsim "   --threads 1 --threads-dpi all -O3 --x-assign fast --x-initial fast --output-split 10000 --output-split-cfuncs 100 --unroll-count 256 -Wno-PINCONNECTEMPTY -Wno-ASSIGNDLY -Wno-DECLFILENAME -Wno-UNUSED -Wno-UNOPTFLAT -Wno-BLKANDNBLK -Wno-style -Wall -Wno-fatal --timescale 1ns/1ps --max-num-width 1048576 +define+CLOCK_PERIOD=1.0 +define+RESET_DELAY=777.7 +define+PRINTF_COND=TestDriver.printf_cond +define+STOP_COND=!TestDriver.reset +define+MODEL=TestHarness +define+RANDOMIZE_MEM_INIT +define+RANDOMIZE_REG_INIT +define+RANDOMIZE_GARBAGE_ASSIGN +define+RANDOMIZE_INVALID_ASSIGN +define+VERILATOR --top-module TestDriver --vpi -f /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/sim_files.common.f  -o /media/0/chipyard/sims/verilator/simulator-chipyard.harness-CVA6Config -Mdir /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config -CFLAGS "-include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.h"
+touch /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.mk
+make VM_PARALLEL_BUILDS=1 -C /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config -f VTestDriver.mk
+make[1]: Entering directory '/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config'
+/media/0/chipyard/.conda-env/bin/x86_64-conda-linux-gnu-c++  -I.  -MMD -I/media/0/chipyard/.conda-env/share/verilator/include -I/media/0/chipyard/.conda-env/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -O3 -std=c++17 -I/media/0/chipyard/.conda-env/esp-tools/include -I/media/0/chipyard/tools/DRAMSim2 -I/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral   -DVERILATOR -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.plusArgs -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.h -DVL_TIME_CONTEXT   -fcoroutines -Os -c -o SimDRAM.o /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/SimDRAM.cc
+/media/0/chipyard/.conda-env/bin/x86_64-conda-linux-gnu-c++  -I.  -MMD -I/media/0/chipyard/.conda-env/share/verilator/include -I/media/0/chipyard/.conda-env/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -O3 -std=c++17 -I/media/0/chipyard/.conda-env/esp-tools/include -I/media/0/chipyard/tools/DRAMSim2 -I/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral   -DVERILATOR -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.plusArgs -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.h -DVL_TIME_CONTEXT   -fcoroutines -Os -c -o SimJTAG.o /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/SimJTAG.cc
+/media/0/chipyard/.conda-env/bin/x86_64-conda-linux-gnu-c++  -I.  -MMD -I/media/0/chipyard/.conda-env/share/verilator/include -I/media/0/chipyard/.conda-env/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -O3 -std=c++17 -I/media/0/chipyard/.conda-env/esp-tools/include -I/media/0/chipyard/tools/DRAMSim2 -I/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral   -DVERILATOR -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.plusArgs -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.h -DVL_TIME_CONTEXT   -fcoroutines -Os -c -o SimTSI.o /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/SimTSI.cc
+/media/0/chipyard/.conda-env/bin/x86_64-conda-linux-gnu-c++  -I.  -MMD -I/media/0/chipyard/.conda-env/share/verilator/include -I/media/0/chipyard/.conda-env/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -O3 -std=c++17 -I/media/0/chipyard/.conda-env/esp-tools/include -I/media/0/chipyard/tools/DRAMSim2 -I/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral   -DVERILATOR -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.plusArgs -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.h -DVL_TIME_CONTEXT   -fcoroutines -Os -c -o SimUART.o /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/SimUART.cc
+/media/0/chipyard/.conda-env/bin/x86_64-conda-linux-gnu-c++  -I.  -MMD -I/media/0/chipyard/.conda-env/share/verilator/include -I/media/0/chipyard/.conda-env/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -O3 -std=c++17 -I/media/0/chipyard/.conda-env/esp-tools/include -I/media/0/chipyard/tools/DRAMSim2 -I/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral   -DVERILATOR -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.plusArgs -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.h -DVL_TIME_CONTEXT   -fcoroutines -Os -c -o mm.o /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/mm.cc
+/media/0/chipyard/.conda-env/bin/x86_64-conda-linux-gnu-c++  -I.  -MMD -I/media/0/chipyard/.conda-env/share/verilator/include -I/media/0/chipyard/.conda-env/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow     -O3 -std=c++17 -I/media/0/chipyard/.conda-env/esp-tools/include -I/media/0/chipyard/tools/DRAMSim2 -I/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral   -DVERILATOR -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config.plusArgs -include /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config/VTestDriver.h -DVL_TIME_CONTEXT   -fcoroutines -Os -c -o mm_dramsim2.o /media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/gen-collateral/mm_dramsim2.cc
+make[1]: Leaving directory '/media/0/chipyard/sims/verilator/generated-src/chipyard.harness.TestHarness.CVA6Config/chipyard.harness.TestHarness.CVA6Config'
+make: Leaving directory '/media/0/chipyard/sims/verilator'
