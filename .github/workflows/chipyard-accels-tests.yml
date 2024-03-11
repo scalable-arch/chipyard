@@ -1,4 +1,4 @@
-name: chipyard-ci-process
+name: chipyard-accels-test
 
 on:
   # run ci on pull requests targeting following branches (runs on the merge commit)
