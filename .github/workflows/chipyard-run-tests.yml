@@ -10,7 +10,8 @@ on:
 
 defaults:
   run:
-    shell: bash -leo pipefail {0}
+     shell: bash -eo pipefail {0}   
+#    shell: bash -leo pipefail {0}
 
 env:
   tools-cache-version: v17
