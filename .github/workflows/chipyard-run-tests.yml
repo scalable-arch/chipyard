@@ -23,7 +23,7 @@ env:
 jobs:
   cancel-prior-workflows:
     name: cancel-prior-workflows
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.11.0
@@ -35,7 +35,7 @@ jobs:
   # example here: https://github.com/dorny/paths-filter#examples
   change-filters:
     name: filter-jobs-on-changes
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     # Queried by downstream jobs to determine if they should run.
     outputs:
       needs-rtl: ${{ steps.filter.outputs.all_count != steps.filter.outputs.skip-rtl_count }}
@@ -90,7 +90,7 @@ jobs:
   setup-complete:
     name: setup-complete
     needs: [create-conda-env-as4]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Set up complete
         run: echo Set up is complete!
@@ -1110,6 +1110,6 @@ jobs:
             constellation-run-tests,
             prepare-chipyard-fpga, # firesim-run-tests,
             fireboom-run-tests]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - run: echo Success!
